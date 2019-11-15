@@ -1,8 +1,9 @@
 package com.appsstuff.pattern.proxy.domian;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -31,8 +32,8 @@ public class Book {
 	public void setStoredIn(String storedIn) {
 		this.storedIn = storedIn;
 	}
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL , mappedBy = "isbn")
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="auther")
 	private Auther auther;
 	
 	private BookTypeEnum type;

@@ -15,10 +15,6 @@ public class Auther {
 	@Id
 	private String id;
 	private String name;
-	
-	@OneToOne(optional = false ,fetch = FetchType.LAZY)
-	private Book isbn;
-	
 	public String getId() {
 		return id;
 	}
@@ -32,14 +28,10 @@ public class Auther {
 		this.name = name;
 	}
 
-	public void setIsbn(Book isbn) {
-		this.isbn = isbn;
-	}
 	public Auther(String id, String name, Book isbn) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.isbn = isbn;
 	}
 	public Auther() {
 		super();
