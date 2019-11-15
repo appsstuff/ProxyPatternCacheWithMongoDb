@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.appsstuff.pattern.proxy.domian.Book;
 
 @Repository
-public interface BookRepos extends JpaRepository<Book, String> {
+public interface BookRepos extends JpaRepository<Book, Integer> {
 	Book findByIsbn(String isbn);
 }

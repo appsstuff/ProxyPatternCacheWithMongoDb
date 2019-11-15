@@ -1,0 +1,19 @@
+## start MonoDB
+
+## create database
+> user appsstuff
+> show dbs
+> db.test.insert({"dbname":"appssuff"}) 
+
+#create user
+db.createUser(
+{
+    user: "root",
+    pwd: "root",
+    roles: [
+              { role: "userAdminAnyDatabase", db: "admin" },
+              { role: "readWriteAnyDatabase", db: "admin" },
+              { role: "dbAdminAnyDatabase", db: "admin" },
+              { role: "clusterAdmin", db: "admin" }
+           ]
+})

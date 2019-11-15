@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity()
 @Table(name="BOOKS")
 @SequenceGenerator(initialValue = 1,sequenceName = "booksSeq",allocationSize = 1, name = "booksSeq")
-public class Book {
+public class Book{
 
 	@Id
 	@JsonIgnore

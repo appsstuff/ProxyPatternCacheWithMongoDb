@@ -7,6 +7,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 @Entity()
 @Table(name="AUTHER")
 @SequenceGenerator(initialValue = 1,sequenceName = "authersSeq",allocationSize = 1, name = "authersSeq")

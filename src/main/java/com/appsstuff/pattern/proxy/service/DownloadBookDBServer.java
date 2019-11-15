@@ -9,7 +9,7 @@ import com.appsstuff.pattern.proxy.domian.BookLibrary;
 import com.appsstuff.pattern.proxy.repo.BookRepos;
 
 @Component
-public class DownloadBookService implements BookLibrary {
+public class DownloadBookDBServer implements BookLibrary {
 
 	@Autowired
 	private BookRepos bookRepos;
