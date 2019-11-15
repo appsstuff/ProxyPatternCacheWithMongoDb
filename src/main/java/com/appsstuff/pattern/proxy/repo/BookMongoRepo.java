@@ -9,6 +9,6 @@ import com.appsstuff.pattern.proxy.domian.BookDocument;
 @Repository
 public interface BookMongoRepo extends MongoRepository<BookDocument, Integer>{
 
-	Book findByIsbn(String isbn);
+	BookDocument findByIsbn(String isbn);
 
 }

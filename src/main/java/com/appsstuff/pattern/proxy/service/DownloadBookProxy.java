@@ -10,20 +10,19 @@ import com.appsstuff.pattern.proxy.repo.BookMongoRepo;
 
 @Component
 public class DownloadBookProxy implements BookLibrary {
-	
+
 //	private HashMap<String,Book> bookCacheServer = new HashMap<String,Book>();
-	
-	
+
 	@Autowired
 	private BookLibrary downloadBookDBServer;
-	
+
 	@Autowired
 	private BookMongoRepo chaceServer;
-	
+
 	@Override
 	public Book downloadBook(String isbn) {
 		Book book = searchInBookCacheServer(isbn);
-		if(book==null) {
+		if (book == null) {
 			book = downloadBookDBServer.downloadBook(isbn);
 			insertBookInCacheServer(book);
 			book.setStoredIn("Book in Database Store");
@@ -32,25 +31,26 @@ public class DownloadBookProxy implements BookLibrary {
 		book.setStoredIn("Book in Cache Store");
 		return book;
 	}
-	
+
 	public void clearCacheStore() {
 		chaceServer.deleteAll();
 	}
 
 	private void insertBookInCacheServer(Book book) {
-		BookDocument doc = new BookDocument(book.getId(),book.getIsbn(), book);
-		chaceServer.save(doc);
+		BookDocument doc = new BookDocument(book.getId(), book.getIsbn(), book);
+		doc = chaceServer.save(doc);
+		System.out.println(doc.getBook().getName());
 		System.out.println("Book added to cache server");
 	}
 
 	private Book searchInBookCacheServer(String isbn) {
-		Book book =chaceServer.findByIsbn(isbn);
-		if(book==null) {
+		BookDocument book = chaceServer.findByIsbn(isbn);
+		if (book == null) {
 			System.out.println("Book not found in cache server");
 			return null;
 		}
 		System.out.println("Book Found in cache server");
-		return book;
+		return book.getBook();
 	}
 
 }

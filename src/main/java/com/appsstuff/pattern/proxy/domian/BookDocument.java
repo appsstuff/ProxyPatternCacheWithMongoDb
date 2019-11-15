@@ -11,6 +11,7 @@ public class BookDocument {
 	private long id;
 	private String isbn;
 	private Book book;
+	
 	public BookDocument(long id, String isbn , Book book) {
 		super();
 		this.id = id;
@@ -35,5 +36,4 @@ public class BookDocument {
 	public void setBook(Book book) {
 		this.book = book;
 	}
-	
 	}
